@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "./app/store";
+import { getCurrency } from "./features/currency/currencySlice";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const dispatch: AppDispatch = useDispatch();
+  const { currency } = useSelector((state: RootState) => state.currency);
+
+  useEffect(() => {
+    dispatch(getCurrency());
+  }, [dispatch]);
+
+  return <div className="App">{currency.currency}</div>;
 }
 
 export default App;
