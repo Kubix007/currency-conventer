@@ -3,15 +3,22 @@ import { useFormik } from "formik";
 import { currencies } from "../../data/currencies";
 import * as yup from "yup";
 import * as Styles from "./CurrencyForm.styles";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../app/store";
+import {
+  getCurrencyToReceive,
+  getCurrencyToSend,
+} from "../../features/currency/currencySlice";
 
 const validationSchema = yup.object().shape({
   currencyToSendSelect: yup.string().required("This field is required."),
   currencyToReceiveSelect: yup.string().required("This field is required."),
   currencyToSendTextField: yup
-    .string()
+    .number()
+    .typeError("The value must be a number")
     .test(
       "oneOfRequired",
-      "'Send amount' or 'Receive amount' must be entered",
+      "Enter only 'Send amount' or 'Receive amount'",
       function () {
         return (
           (this.parent.currencyToSendTextField ||
@@ -24,10 +31,11 @@ const validationSchema = yup.object().shape({
       }
     ),
   currencyToReceiveTextField: yup
-    .string()
+    .number()
+    .typeError("The value must be a number")
     .test(
       "oneOfRequired",
-      "'Send amount' or 'Receive amount' must be entered",
+      "Enter only 'Send amount' or 'Receive amount'",
       function () {
         return (
           (this.parent.currencyToSendTextField ||
@@ -42,6 +50,9 @@ const validationSchema = yup.object().shape({
 });
 
 const CurrencyForm = () => {
+  const dispatch: AppDispatch = useDispatch();
+  //const { currency } = useSelector((state: RootState) => state.currency);
+
   const formik = useFormik({
     initialValues: {
       currencyToSendTextField: "",
@@ -51,7 +62,24 @@ const CurrencyForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      const currencyToSend = currencies.find(
+        (item) => item.code === values.currencyToSendSelect
+      );
+      const currencyToReceive = currencies.find(
+        (item) => item.code === values.currencyToReceiveSelect
+      );
+      dispatch(
+        getCurrencyToReceive({
+          table: currencyToReceive!.table,
+          code: currencyToReceive!.code,
+        })
+      );
+      dispatch(
+        getCurrencyToSend({
+          table: currencyToSend!.table,
+          code: currencyToSend!.code,
+        })
+      );
     },
   });
 

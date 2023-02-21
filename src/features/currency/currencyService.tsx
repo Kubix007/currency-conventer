@@ -1,15 +1,17 @@
 import axios from "axios";
+import * as SharedTypes from "../../shared/types";
 
-const API_URL = "http://api.nbp.pl/api/exchangerates/rates/a/gbp/";
-
-const getCurrency = async () => {
+const getCurrency = async (data: SharedTypes.IRequestData) => {
   const config = {
     params: {
       format: "json",
     },
   };
 
-  const response = await axios.get(API_URL, config);
+  const response = await axios.get(
+    `http://api.nbp.pl/api/exchangerates/rates/${data.table}/${data.code}/`,
+    config
+  );
 
   return response.data;
 };

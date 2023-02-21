@@ -1,19 +1,34 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ICurrencyState } from "../../shared/types";
+import { ICurrenciesState } from "../../shared/types";
 import currencyService from "./currencyService";
+import * as SharedTypes from "../../shared/types";
 
-const initialState: ICurrencyState = {
-  currency: {
-    table: "",
-    currency: "",
-    code: "",
-    rates: [
-      {
-        no: "",
-        effectiveDate: "",
-        mid: 0,
-      },
-    ],
+const initialState: ICurrenciesState = {
+  currencies: {
+    currencyToSend: {
+      table: "",
+      currency: "",
+      code: "",
+      rates: [
+        {
+          no: "",
+          effectiveDate: "",
+          mid: 0,
+        },
+      ],
+    },
+    currencyToReceive: {
+      table: "",
+      currency: "",
+      code: "",
+      rates: [
+        {
+          no: "",
+          effectiveDate: "",
+          mid: 0,
+        },
+      ],
+    },
   },
   isError: false,
   isSuccess: false,
@@ -22,11 +37,29 @@ const initialState: ICurrencyState = {
 };
 
 //Get currency
-export const getCurrency = createAsyncThunk(
-  "/currency/getOne",
-  async (_, thunkAPI) => {
+export const getCurrencyToSend = createAsyncThunk(
+  "/currency/getCurrencyToSend",
+  async (data: SharedTypes.IRequestData, thunkAPI) => {
     try {
-      return await currencyService.getCurrency();
+      return await currencyService.getCurrency(data);
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+//Get currency
+export const getCurrencyToReceive = createAsyncThunk(
+  "/currency/getCurrencyToReceive",
+  async (data: SharedTypes.IRequestData, thunkAPI) => {
+    try {
+      return await currencyService.getCurrency(data);
     } catch (error: any) {
       const message =
         (error.response &&
@@ -47,16 +80,31 @@ export const currencySlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(getCurrency.pending, (state) => {
+      .addCase(getCurrencyToSend.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getCurrency.fulfilled, (state, action) => {
+      .addCase(getCurrencyToSend.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        state.currency = action.payload;
+        state.currencies.currencyToSend = action.payload;
       })
-      .addCase(getCurrency.rejected, (state, action) => {
+      .addCase(getCurrencyToSend.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.payload as string;
+      })
+      .addCase(getCurrencyToReceive.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCurrencyToReceive.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.currencies.currencyToReceive = action.payload;
+      })
+      .addCase(getCurrencyToReceive.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
         state.isError = true;
