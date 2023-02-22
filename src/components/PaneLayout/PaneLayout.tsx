@@ -1,18 +1,8 @@
-import {
-  Box,
-  Dialog,
-  DialogTitle,
-  IconButton,
-  InputAdornment,
-  Popover,
-  TextField,
-  Typography,
-} from "@mui/material";
-import CurrencyForm from "../CurrencyForm";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 import * as Styles from "./PaneLayout.styles";
 import CountryIcons from "../CountryIcons/CountryIcons";
 import { useState } from "react";
-import CountrySelect from "../CurrencyAutocomplete/CurrencyAutocomplete";
+import CurrencyPopover from "../CurrencyPopover";
 
 const PaneLayout = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
@@ -20,13 +10,6 @@ const PaneLayout = () => {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
 
   return (
     <Styles.BoxContainer>
@@ -46,24 +29,7 @@ const PaneLayout = () => {
             ),
           }}
         />
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-          transformOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-        >
-          <Box p={2}>
-            <CountrySelect />
-          </Box>
-        </Popover>
+        <CurrencyPopover anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
       </Styles.StackContainer>
     </Styles.BoxContainer>
   );
