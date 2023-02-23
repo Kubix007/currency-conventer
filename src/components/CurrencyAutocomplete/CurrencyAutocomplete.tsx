@@ -1,12 +1,20 @@
 import { Autocomplete, Box, TextField } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../app/store";
 import { currencies } from "../../data/currencies";
+import {
+  setCurrencyToReceive,
+  setCurrencyToSend,
+} from "../../features/autocomplete/autocompleteSlice";
 import * as Types from "./CurrencyAutocomplete.types";
 
 const CountryAutocomplete = ({
   currency,
-  setCurrency,
   handleClose,
+  name,
 }: Types.ICurrencyAutocompleteProps) => {
+  const dispatch: AppDispatch = useDispatch();
+
   return (
     <Autocomplete
       id="country-select-demo"
@@ -16,7 +24,11 @@ const CountryAutocomplete = ({
       disableClearable
       value={currency}
       onChange={(event: any, newValue: string | null) => {
-        setCurrency(newValue);
+        if (name === "You send") {
+          dispatch(setCurrencyToSend(newValue));
+        } else {
+          dispatch(setCurrencyToReceive(newValue));
+        }
         handleClose();
       }}
       getOptionLabel={(option) => option.currencyCode}

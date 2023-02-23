@@ -11,38 +11,16 @@ const PaneLayout = () => {
   const [anchorElReceive, setAnchorElReceive] =
     useState<HTMLButtonElement | null>(null);
 
-  const [currencyToSend, setCurrencyToSend] =
-    useState<SharedStyles.ICountryType>({
-      countryCode: "pl",
-      countryName: "Poland",
-      currencyCode: "PLN",
-      currencyName: "Złotówka",
-      table: "a",
-    });
-
-  const [currencyToReceive, setCurrencyToReceive] =
-    useState<SharedStyles.ICountryType>({
-      countryCode: "gb",
-      countryName: "United Kingdom",
-      currencyCode: "GBP",
-      currencyName: "Pound Sterling",
-      table: "a",
-    });
-
   return (
     <Styles.BoxContainer>
       <Styles.StackContainer>
         <CurrencyFormToSend
           name="You send"
-          currency={currencyToSend}
-          setCurrency={setCurrencyToSend}
           anchorEl={anchorElSend}
           setAnchorEl={setAnchorElSend}
         />
         <CurrencyFormToReceive
           name="They receive"
-          currency={currencyToReceive}
-          setCurrency={setCurrencyToReceive}
           anchorEl={anchorElReceive}
           setAnchorEl={setAnchorElReceive}
         />

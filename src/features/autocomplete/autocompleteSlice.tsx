@@ -23,8 +23,15 @@ export const autocompleteSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+    setCurrencyToReceive: (state, action) => {
+      state.currencyToReceive = action.payload;
+    },
+    setCurrencyToSend: (state, action) => {
+      state.currencyToSend = action.payload;
+    },
   },
 });
 
-export const { reset } = autocompleteSlice.actions;
+export const { reset, setCurrencyToReceive, setCurrencyToSend } =
+  autocompleteSlice.actions;
 export default autocompleteSlice.reducer;
