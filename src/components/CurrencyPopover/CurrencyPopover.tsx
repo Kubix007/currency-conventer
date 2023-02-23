@@ -22,15 +22,15 @@ const CurrencyPopover = ({
       anchorEl={anchorEl}
       onClose={handleClose}
       anchorOrigin={{
-        vertical: "top",
-        horizontal: "left",
-      }}
-      transformOrigin={{
         vertical: "bottom",
         horizontal: "right",
       }}
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "center",
+      }}
     >
-      <Box p={2}>
+      <Box p={1}>
         <CurrencyAutocomplete
           setCurrency={setCurrency}
           currency={currency}

@@ -15,7 +15,7 @@ const CurrencyTextField = ({
     <TextField
       label={name}
       id={name}
-      sx={{ m: 1, width: "40ch" }}
+      sx={{ m: 1, width: "35ch" }}
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
