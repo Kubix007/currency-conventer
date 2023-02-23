@@ -1,4 +1,6 @@
-export const currencies = [
+import * as SharedTypes from "../shared/types";
+
+export const currencies: SharedTypes.ICountryType[] = [
   {
     currencyCode: "AED",
     currencyName: "Arab Emirates Dirham",
@@ -283,6 +285,7 @@ export const currencies = [
     currencyCode: "EUR",
     currencyName: "Euro",
     countryCode: "eu",
+    countryName: "none",
     table: "a",
   },
   {

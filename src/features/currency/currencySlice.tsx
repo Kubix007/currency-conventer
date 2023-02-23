@@ -6,14 +6,14 @@ import * as SharedTypes from "../../shared/types";
 const initialState: ICurrenciesState = {
   currencies: {
     currencyToSend: {
-      table: "",
-      currency: "",
-      code: "",
+      table: "a",
+      currency: "Złotych",
+      code: "PLN",
       rates: [
         {
           no: "",
           effectiveDate: "",
-          mid: 0,
+          mid: 1,
         },
       ],
     },

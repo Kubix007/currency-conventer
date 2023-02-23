@@ -2,7 +2,12 @@ import { Box, Popover } from "@mui/material";
 import CurrencyAutocomplete from "../CurrencyAutocomplete";
 import * as Types from "./CurrencyPopover.types";
 
-const CurrencyPopover = ({ anchorEl, setAnchorEl }: Types.IPopoverProps) => {
+const CurrencyPopover = ({
+  anchorEl,
+  setAnchorEl,
+  setCurrency,
+  currency,
+}: Types.IPopoverProps) => {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
@@ -26,7 +31,11 @@ const CurrencyPopover = ({ anchorEl, setAnchorEl }: Types.IPopoverProps) => {
       }}
     >
       <Box p={2}>
-        <CurrencyAutocomplete />
+        <CurrencyAutocomplete
+          setCurrency={setCurrency}
+          currency={currency}
+          handleClose={handleClose}
+        />
       </Box>
     </Popover>
   );

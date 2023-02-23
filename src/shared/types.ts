@@ -35,3 +35,11 @@ export interface IRequestData {
   table: any;
   code: string;
 }
+
+export interface ICountryType {
+  currencyCode: string;
+  currencyName: string;
+  countryCode: string;
+  countryName: string;
+  table: string;
+}

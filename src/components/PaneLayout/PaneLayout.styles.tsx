@@ -7,4 +7,6 @@ export const BoxContainer = styled(Box)`
   min-height: 555px;
 `;
 
-export const StackContainer = styled(Stack)``;
+export const StackContainer = styled(Stack)`
+  align-items: center;
+`;

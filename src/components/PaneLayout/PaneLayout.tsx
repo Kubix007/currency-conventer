@@ -1,35 +1,50 @@
-import { IconButton, InputAdornment, TextField } from "@mui/material";
 import * as Styles from "./PaneLayout.styles";
-import CountryIcons from "../CountryIcons/CountryIcons";
+import * as SharedStyles from "../../shared/types";
 import { useState } from "react";
-import CurrencyPopover from "../CurrencyPopover";
+import CurrencyForm from "../CurrencyForm";
 
 const PaneLayout = () => {
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const [anchorElSend, setAnchorElSend] = useState<HTMLButtonElement | null>(
+    null
+  );
+  const [anchorElReceive, setAnchorElReceive] =
+    useState<HTMLButtonElement | null>(null);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const [currencyToSend, setCurrencyToSend] =
+    useState<SharedStyles.ICountryType>({
+      countryCode: "pl",
+      countryName: "Poland",
+      currencyCode: "PLN",
+      currencyName: "Złotówka",
+      table: "a",
+    });
+
+  const [currencyToReceive, setCurrencyToReceive] =
+    useState<SharedStyles.ICountryType>({
+      countryCode: "gb",
+      countryName: "United Kingdom",
+      currencyCode: "GBP",
+      currencyName: "Pound Sterling",
+      table: "a",
+    });
 
   return (
     <Styles.BoxContainer>
       <Styles.StackContainer>
-        <TextField
-          label="Enter Amount"
-          id="outlined-start-adornment"
-          sx={{ m: 1, width: "25ch" }}
-          InputProps={{
-            endAdornment: <InputAdornment position="end">GBP</InputAdornment>,
-            startAdornment: (
-              <InputAdornment position="start">
-                <IconButton onClick={handleClick} edge="start">
-                  <CountryIcons />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
+        <CurrencyForm
+          name="You send"
+          currency={currencyToSend}
+          setCurrency={setCurrencyToSend}
+          anchorEl={anchorElSend}
+          setAnchorEl={setAnchorElSend}
         />
-        <CurrencyPopover anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
+        <CurrencyForm
+          name="They receive"
+          currency={currencyToReceive}
+          setCurrency={setCurrencyToReceive}
+          anchorEl={anchorElReceive}
+          setAnchorEl={setAnchorElReceive}
+        />
       </Styles.StackContainer>
     </Styles.BoxContainer>
   );
