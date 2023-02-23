@@ -31,6 +31,11 @@ export interface ICurrenciesState {
   message: string;
 }
 
+export interface IAutocompleteState {
+  currencyToSend: ICountryType;
+  currencyToReceive: ICountryType;
+}
+
 export interface IRequestData {
   table: any;
   code: string;

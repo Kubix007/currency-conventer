@@ -18,9 +18,9 @@ const initialState: ICurrenciesState = {
       ],
     },
     currencyToReceive: {
-      table: "",
-      currency: "",
-      code: "",
+      table: "a",
+      currency: "Pound Sterling",
+      code: "GBP",
       rates: [
         {
           no: "",

@@ -1,7 +1,8 @@
 import * as Styles from "./PaneLayout.styles";
 import * as SharedStyles from "../../shared/types";
 import { useState } from "react";
-import CurrencyForm from "../CurrencyForm";
+import CurrencyFormToSend from "../CurrencyForm";
+import CurrencyFormToReceive from "../CurrencyForm";
 
 const PaneLayout = () => {
   const [anchorElSend, setAnchorElSend] = useState<HTMLButtonElement | null>(
@@ -31,14 +32,14 @@ const PaneLayout = () => {
   return (
     <Styles.BoxContainer>
       <Styles.StackContainer>
-        <CurrencyForm
+        <CurrencyFormToSend
           name="You send"
           currency={currencyToSend}
           setCurrency={setCurrencyToSend}
           anchorEl={anchorElSend}
           setAnchorEl={setAnchorElSend}
         />
-        <CurrencyForm
+        <CurrencyFormToReceive
           name="They receive"
           currency={currencyToReceive}
           setCurrency={setCurrencyToReceive}
