@@ -32,7 +32,7 @@ export const currencies: SharedTypes.ICountryType[] = [
   {
     currencyCode: "ANG",
     currencyName: "Netherlands Antillean Guilder",
-    countryCode: "an",
+    countryCode: "sx",
     countryName: "Netherlands Antilles",
     table: "b",
   },

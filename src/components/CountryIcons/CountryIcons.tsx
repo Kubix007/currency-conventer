@@ -1,8 +1,9 @@
 import * as Types from "./CountryIcons.types";
+import * as Styles from "./CountryIcons.styles";
 
 const CountryIcons = ({ countryIso }: Types.ICountryIconsProps) => {
   const flagSource = `https://flagcdn.com/${countryIso}.svg`;
-  return <img src={flagSource} width="30" alt="flag" />;
+  return <Styles.FlagImage src={flagSource} alt="flag" />;
 };
 
 export default CountryIcons;
