@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const BoxContainer = styled(Box)`
   padding: 30px;
+  margin: 10px;
   min-height: 355px;
 `;
 

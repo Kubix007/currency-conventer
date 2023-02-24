@@ -4,7 +4,7 @@ import * as Styles from "./App.styles";
 
 function App() {
   return (
-    <div className="App">
+    <Styles.App>
       <Container maxWidth="sm">
         <Styles.Center>
           <Paper elevation={20}>
@@ -12,7 +12,7 @@ function App() {
           </Paper>
         </Styles.Center>
       </Container>
-    </div>
+    </Styles.App>
   );
 }
 
