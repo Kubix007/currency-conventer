@@ -6,7 +6,15 @@ import {
   setCurrencyToReceive,
   setCurrencyToSend,
 } from "../../features/autocomplete/autocompleteSlice";
+import {
+  getCurrencyToReceive,
+  getCurrencyToSend,
+  resetCurrencyToReceive,
+  resetCurrencyToSend,
+} from "../../features/currency/currencySlice";
 import * as Types from "./CurrencyAutocomplete.types";
+import * as Styles from "./CurrencyAutocomplete.styles";
+import * as SharedTypes from "../../shared/types";
 
 const CountryAutocomplete = ({
   currency,
@@ -14,6 +22,37 @@ const CountryAutocomplete = ({
   name,
 }: Types.ICurrencyAutocompleteProps) => {
   const dispatch: AppDispatch = useDispatch();
+
+  const handleChange = (newValue: SharedTypes.ICountryType | null) => {
+    if (name === "You send") {
+      dispatch(setCurrencyToSend(newValue)); //We are changing state for autocomplete state
+      if (newValue?.currencyCode !== "PLN") {
+        // If the currency is not from Poland, send request to api
+        dispatch(
+          getCurrencyToSend({
+            table: newValue!.table,
+            code: newValue!.currencyCode,
+          }) //We are changing state for repsonse from API
+        );
+      } else {
+        dispatch(resetCurrencyToSend()); //If the currency is from Poland, set default value
+      }
+    } else {
+      dispatch(setCurrencyToReceive(newValue)); //We are changing state for autocomplete state
+      if (newValue?.currencyCode !== "PLN") {
+        // If the currency is not from Poland, send request to api
+        dispatch(
+          getCurrencyToReceive({
+            table: newValue!.table,
+            code: newValue!.currencyCode,
+          }) //We are changing state for repsonse from API
+        );
+      } else {
+        dispatch(resetCurrencyToReceive()); //If the currency is from Poland, set default value
+      }
+    }
+    handleClose();
+  };
 
   return (
     <Autocomplete
@@ -23,13 +62,8 @@ const CountryAutocomplete = ({
       autoHighlight
       disableClearable
       value={currency}
-      onChange={(event: any, newValue: string | null) => {
-        if (name === "You send") {
-          dispatch(setCurrencyToSend(newValue));
-        } else {
-          dispatch(setCurrencyToReceive(newValue));
-        }
-        handleClose();
+      onChange={(event: any, newValue: SharedTypes.ICountryType | null) => {
+        handleChange(newValue);
       }}
       getOptionLabel={(option) => option.currencyCode}
       renderOption={(props, option) => (
@@ -38,12 +72,11 @@ const CountryAutocomplete = ({
           sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
           {...props}
         >
-          <img
+          <Styles.FlagImage
             loading="lazy"
-            width="30"
             src={`https://flagcdn.com/w20/${option.countryCode.toLowerCase()}.png`}
             srcSet={`https://flagcdn.com/w40/${option.countryCode.toLowerCase()}.png 2x`}
-            alt=""
+            alt={option.currencyCode}
           />
           {option.currencyName} ({option.currencyCode})
         </Box>

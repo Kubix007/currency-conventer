@@ -3,6 +3,7 @@ import { RootState } from "../../app/store";
 import ResultCountryImage from "../ResultCountryImage";
 import { Grid, Stack } from "@mui/material";
 import * as Styles from "./ResultDisplay.styles";
+import ExchangeFunctions from "../ExchangeFunctions/ExchangeFunctions";
 
 const ResultDisplay = () => {
   const { currencyToReceive } = useSelector(
@@ -12,22 +13,25 @@ const ResultDisplay = () => {
     (state: RootState) => state.autocomplete
   );
 
+  const currency = useSelector((state: RootState) => state.currency);
+
   return (
     <Grid container direction="column">
       <Grid item>
-        <Stack direction="row" justifyContent="space-between">
+        <Stack direction="row" justifyContent="space-around">
           <ResultCountryImage countryIso={currencyToSend.countryCode} />
           <ResultCountryImage countryIso={currencyToReceive.countryCode} />
         </Stack>
       </Grid>
       <Grid item>
-        <Stack direction="row" justifyContent="space-around">
+        <Stack direction="row" justifyContent="space-evenly">
           <Styles.CurrencyInfo>
-            0 {currencyToSend.currencyCode}
+            1.00 {currencyToSend.currencyCode}
           </Styles.CurrencyInfo>
           <Styles.CurrencyInfo>=</Styles.CurrencyInfo>
           <Styles.CurrencyInfo>
-            0 {currencyToReceive.currencyCode}
+            {ExchangeFunctions.convertSingleValue(currency)}{" "}
+            {currencyToReceive.currencyCode}
           </Styles.CurrencyInfo>
         </Stack>
       </Grid>

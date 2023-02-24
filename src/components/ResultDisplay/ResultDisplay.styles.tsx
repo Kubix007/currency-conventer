@@ -9,5 +9,6 @@ export const Container = styled(Stack)`
 export const CurrencyInfo = styled(Typography)`
   &.MuiTypography-root {
     font-size: 1.5em;
+    font-weight: bold;
   }
 `;

@@ -77,6 +77,34 @@ export const currencySlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+    resetCurrencyToSend: (state) => {
+      state.currencies.currencyToSend = {
+        table: "a",
+        currency: "Złotych",
+        code: "PLN",
+        rates: [
+          {
+            no: "",
+            effectiveDate: "",
+            mid: 1,
+          },
+        ],
+      };
+    },
+    resetCurrencyToReceive: (state) => {
+      state.currencies.currencyToReceive = {
+        table: "a",
+        currency: "Złotych",
+        code: "PLN",
+        rates: [
+          {
+            no: "",
+            effectiveDate: "",
+            mid: 1,
+          },
+        ],
+      };
+    },
   },
   extraReducers(builder) {
     builder
@@ -113,5 +141,6 @@ export const currencySlice = createSlice({
   },
 });
 
-export const { reset } = currencySlice.actions;
+export const { reset, resetCurrencyToReceive, resetCurrencyToSend } =
+  currencySlice.actions;
 export default currencySlice.reducer;
