@@ -26,12 +26,13 @@ const ResultDisplay = () => {
       <Grid item>
         <Stack direction="row" justifyContent="space-evenly">
           <Styles.CurrencyInfo>
-            1.00 {currencyToSend.currencyCode}
+            1.00{" "}
+            <Styles.Currency>{currencyToSend.currencyCode}</Styles.Currency>
           </Styles.CurrencyInfo>
           <Styles.CurrencyInfo>=</Styles.CurrencyInfo>
           <Styles.CurrencyInfo>
             {ExchangeFunctions.convertSingleValue(currency)}{" "}
-            {currencyToReceive.currencyCode}
+            <Styles.Currency> {currencyToReceive.currencyCode}</Styles.Currency>
           </Styles.CurrencyInfo>
         </Stack>
       </Grid>

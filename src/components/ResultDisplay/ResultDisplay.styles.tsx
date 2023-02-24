@@ -12,3 +12,7 @@ export const CurrencyInfo = styled(Typography)`
     font-weight: bold;
   }
 `;
+
+export const Currency = styled.span`
+  font-size: 0.7em;
+`;

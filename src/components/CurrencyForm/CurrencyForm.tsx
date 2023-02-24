@@ -1,19 +1,28 @@
-import CurrencyPopover from "../CurrencyPopover";
-import CurrencyTextField from "../CurrencyTextField";
-import * as Types from "./CurrencyForm.types";
+import { useState } from "react";
+import { CurrencyPopoverToReceive } from "../CurrencyPopover";
+import { CurrencyPopoverToSend } from "../CurrencyPopover";
+import CurrencyToReceiveTextField from "../CurrencyToReceiveTextField";
+import CurrencyToSendTextField from "../CurrencyToSendTextField";
 
-const CurrencyForm = ({
-  setAnchorEl,
-  anchorEl,
-  name,
-}: Types.ICurrencyFormProps) => {
+const CurrencyForm = () => {
+  const [anchorElSend, setAnchorElSend] = useState<HTMLButtonElement | null>(
+    null
+  );
+  const [anchorElReceive, setAnchorElReceive] =
+    useState<HTMLButtonElement | null>(null);
   return (
     <>
-      <CurrencyTextField name={name} setAnchorEl={setAnchorEl} />
-      <CurrencyPopover
-        name={name}
-        anchorEl={anchorEl}
-        setAnchorEl={setAnchorEl}
+      <CurrencyToSendTextField setAnchorEl={setAnchorElSend} />
+      <CurrencyToReceiveTextField setAnchorEl={setAnchorElReceive} />
+      <CurrencyPopoverToSend
+        name="You send"
+        anchorEl={anchorElSend}
+        setAnchorEl={setAnchorElSend}
+      />
+      <CurrencyPopoverToReceive
+        name="They Receive"
+        anchorEl={anchorElReceive}
+        setAnchorEl={setAnchorElReceive}
       />
     </>
   );
