@@ -10,6 +10,7 @@ const CurrencyForm = () => {
   );
   const [anchorElReceive, setAnchorElReceive] =
     useState<HTMLButtonElement | null>(null);
+
   return (
     <>
       <CurrencyToSendTextField setAnchorEl={setAnchorElSend} />

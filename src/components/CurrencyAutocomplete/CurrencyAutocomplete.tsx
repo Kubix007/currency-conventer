@@ -12,6 +12,10 @@ import {
   resetCurrencyToReceive,
   resetCurrencyToSend,
 } from "../../features/currency/currencySlice";
+import {
+  setTextFieldToReceive,
+  setTextFieldToSend,
+} from "../../features/textfield/textFieldSlice";
 import * as Types from "./CurrencyAutocomplete.types";
 import * as Styles from "./CurrencyAutocomplete.styles";
 import * as SharedTypes from "../../shared/types";
@@ -37,6 +41,8 @@ const CountryAutocomplete = ({
       } else {
         dispatch(resetCurrencyToSend()); //If the currency is from Poland, set default value
       }
+      dispatch(setTextFieldToSend(""));
+      dispatch(setTextFieldToReceive("")); //Clear TextField when a country changes
     } else {
       dispatch(setCurrencyToReceive(newValue)); //We are changing state for autocomplete state
       if (newValue?.currencyCode !== "PLN") {
@@ -50,6 +56,8 @@ const CountryAutocomplete = ({
       } else {
         dispatch(resetCurrencyToReceive()); //If the currency is from Poland, set default value
       }
+      dispatch(setTextFieldToSend(""));
+      dispatch(setTextFieldToReceive("")); //Clear TextField when a country changes
     }
     handleClose();
   };

@@ -36,6 +36,11 @@ export interface IAutocompleteState {
   currencyToReceive: ICountryType;
 }
 
+export interface ITextFieldState {
+  currencyToSend: string;
+  currencyToReceive: string;
+}
+
 export interface IRequestData {
   table: any;
   code: string;
@@ -47,4 +52,11 @@ export interface ICountryType {
   countryCode: string;
   countryName: string;
   table: string;
+}
+
+export interface ExchangeFunctionParameters {
+  currencies: ICurrenciesState;
+  toSendValue: string;
+  toReceiveValue: string;
+  targetId: string;
 }
