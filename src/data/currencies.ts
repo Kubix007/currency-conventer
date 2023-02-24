@@ -285,7 +285,7 @@ export const currencies: SharedTypes.ICountryType[] = [
     currencyCode: "EUR",
     currencyName: "Euro",
     countryCode: "eu",
-    countryName: "none",
+    countryName: "Europe",
     table: "a",
   },
   {
@@ -700,6 +700,13 @@ export const currencies: SharedTypes.ICountryType[] = [
     countryCode: "pg",
     countryName: "Papua New Guinea",
     table: "b",
+  },
+  {
+    currencyCode: "PLN",
+    currencyName: "Złotych",
+    countryCode: "pl",
+    countryName: "Poland",
+    table: "none",
   },
   {
     currencyCode: "PHP",
