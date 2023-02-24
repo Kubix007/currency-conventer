@@ -9,14 +9,18 @@ const convertCurrency = ({
   const currencyRateToReceive =
     currencies.currencies.currencyToReceive.rates[0].mid;
   const currencyRateToSend = currencies.currencies.currencyToSend.rates[0].mid;
-  const currencyRate = (currencyRateToSend / currencyRateToReceive).toFixed(2);
+  const currencyRate = (currencyRateToSend / currencyRateToReceive).toPrecision(
+    3
+  );
 
   if (targetId === "receiveTextField") {
     return (parseInt(toReceiveValue) / Number(currencyRate))
-      .toFixed(2)
+      .toPrecision(3)
       .toString();
   } else {
-    return (parseInt(toSendValue) * Number(currencyRate)).toFixed(2).toString();
+    return (parseInt(toSendValue) * Number(currencyRate))
+      .toPrecision(3)
+      .toString();
   }
 };
 
@@ -27,11 +31,11 @@ const convertSingleValue = ({ currencies }: SharedTypes.ICurrenciesState) => {
   const currencyRateToSend = currencies.currencyToSend.rates[0].mid;
 
   if (currencyCodeToSend === "PLN") {
-    return currencyRateToReceive.toFixed(2);
+    return currencyRateToReceive.toPrecision(3);
   } else if (currencyCodeToReceive === "PLN") {
-    return currencyRateToSend.toFixed(2);
+    return currencyRateToSend.toPrecision(3);
   } else {
-    return (currencyRateToSend / currencyRateToReceive).toFixed(2);
+    return (currencyRateToSend / currencyRateToReceive).toPrecision(3);
   }
 };
 

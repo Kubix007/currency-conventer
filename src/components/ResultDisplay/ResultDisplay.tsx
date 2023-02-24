@@ -16,20 +16,26 @@ const ResultDisplay = () => {
   const currency = useSelector((state: RootState) => state.currency);
 
   return (
-    <Grid container direction="column">
+    <Grid container direction="row" justifyContent="center">
       <Grid item>
-        <Stack direction="row" justifyContent="space-around">
+        <Stack justifyContent="center" textAlign="center">
           <ResultCountryImage countryIso={currencyToSend.countryCode} />
-          <ResultCountryImage countryIso={currencyToReceive.countryCode} />
-        </Stack>
-      </Grid>
-      <Grid item>
-        <Stack direction="row" justifyContent="space-evenly">
           <Styles.CurrencyInfo>
             1.00{" "}
             <Styles.Currency>{currencyToSend.currencyCode}</Styles.Currency>
           </Styles.CurrencyInfo>
+        </Stack>
+      </Grid>
+      <Grid item>
+        <Stack justifyContent="center" textAlign="center">
+          <Styles.BlankSpace></Styles.BlankSpace>
           <Styles.CurrencyInfo>=</Styles.CurrencyInfo>
+          <Styles.FeeInfo>No transfer fee</Styles.FeeInfo>
+        </Stack>
+      </Grid>
+      <Grid item>
+        <Stack justifyContent="center" textAlign="center">
+          <ResultCountryImage countryIso={currencyToReceive.countryCode} />
           <Styles.CurrencyInfo>
             {ExchangeFunctions.convertSingleValue(currency)}{" "}
             <Styles.Currency> {currencyToReceive.currencyCode}</Styles.Currency>
