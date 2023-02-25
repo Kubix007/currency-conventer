@@ -69,6 +69,9 @@ const CountryAutocomplete = ({
       options={currencies}
       autoHighlight
       disableClearable
+      isOptionEqualToValue={(option, value) =>
+        option.currencyCode === value.currencyCode
+      }
       value={currency}
       onChange={(event: any, newValue: SharedTypes.ICountryType | null) => {
         handleChange(newValue);

@@ -25,7 +25,7 @@ const initialState: ICurrenciesState = {
         {
           no: "",
           effectiveDate: "",
-          mid: 0,
+          mid: 5,
         },
       ],
     },
