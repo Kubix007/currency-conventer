@@ -3,6 +3,7 @@ import { CurrencyPopoverToReceive } from "../CurrencyPopover";
 import { CurrencyPopoverToSend } from "../CurrencyPopover";
 import CurrencyToReceiveTextField from "../CurrencyToReceiveTextField";
 import CurrencyToSendTextField from "../CurrencyToSendTextField";
+import Tooltip from "../Tooltip";
 
 const CurrencyForm = () => {
   const [anchorElSend, setAnchorElSend] = useState<HTMLButtonElement | null>(
@@ -14,6 +15,7 @@ const CurrencyForm = () => {
   return (
     <>
       <CurrencyToSendTextField setAnchorEl={setAnchorElSend} />
+      <Tooltip />
       <CurrencyToReceiveTextField setAnchorEl={setAnchorElReceive} />
       <CurrencyPopoverToSend
         name="You send"

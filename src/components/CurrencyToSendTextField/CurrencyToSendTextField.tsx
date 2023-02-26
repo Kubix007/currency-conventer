@@ -1,4 +1,4 @@
-import { IconButton, InputAdornment, TextField, Tooltip } from "@mui/material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import {
@@ -64,17 +64,15 @@ const CurrencyToSendTextField = ({
           </InputAdornment>
         ),
         startAdornment: (
-          <Tooltip title="Click to change the currency" placement="bottom">
-            <InputAdornment position="start">
-              <IconButton
-                data-testid="toSendButton"
-                onClick={handleClick}
-                edge="start"
-              >
-                <CountryIcons countryIso={currencyToSend.countryCode} />
-              </IconButton>
-            </InputAdornment>
-          </Tooltip>
+          <InputAdornment position="start">
+            <IconButton
+              data-testid="toSendButton"
+              onClick={handleClick}
+              edge="start"
+            >
+              <CountryIcons countryIso={currencyToSend.countryCode} />
+            </IconButton>
+          </InputAdornment>
         ),
       }}
     />
