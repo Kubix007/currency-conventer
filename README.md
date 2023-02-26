@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# Currency Conventer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple application containing pagination tables using data from api.
 
-## Available Scripts
+## How to run project?
 
-In the project directory, you can run:
+### The application was deployed at this link:
+
+`https://currency-conventer-two.vercel.app/`
+
+### Run the applications locally:
+First Download repository:
+
+### `git clone https://github.com/Kubix007/currency-conventer`
+
+Then install all the dependencies:
+
+### `npm install`
+
+After that, you are ready to start the project:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to run tests?
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### End to end Tests:
 
-### `npm test`
+### `npm run e2e`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Jest Tests:
 
-### `npm run build`
+### `npm tests`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Used technologies:
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/><img src="https://styled-components.com/atom.png" alt="redux" width="40" height="40"/><img src="https://embed.zenn.studio/api/optimize-og-image/a62d22ac5a424b6d1042/https%3A%2F%2Fmui.com%2Fstatic%2Flogo.png" alt="redux" width="40" height="40"/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Task
+Create a method to calculate the values displayed on the screen. The user can enter numbers
+into either of the two fields as strings, which need to be parsed by your method.
+Use the exchange rate from the NBP Web API (http://api.nbp.pl/) to calculate the second value,
+for example http://api.nbp.pl/api/exchangerates/rates/a/gbp/?format=json.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+What we require from you:
+A link to a publicly accessible Github repository containing your solution. The repository should
+include a Readme.MD file with instructions for running the code.
+Bonus points will be awarded for including tests. You may choose any of the following
+languages: Java, Kotlin, TypeScript, JavaScript, or Go.
+Judgment criteria: correctness, code quality, covering edge cases & items listed in the
+self-assessment form.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### API endpoint
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+http://api.nbp.pl/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
