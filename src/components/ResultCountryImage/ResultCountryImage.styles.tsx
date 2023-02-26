@@ -13,4 +13,8 @@ export const FlagImage = styled.img`
     width: 60px;
     height: 36px;
   }
+  @media screen and (max-width: 330px) {
+    width: 30px;
+    height: 18px;
+  }
 `;

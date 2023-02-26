@@ -9,7 +9,7 @@ const getCurrency = async (data: SharedTypes.IRequestData) => {
   };
 
   const response = await axios.get(
-    `http://api.nbp.pl/api/exchangerates/rates/${data.table}/${data.code}/`,
+    `https://api.nbp.pl/api/exchangerates/rates/${data.table}/${data.code}/`,
     config
   );
 

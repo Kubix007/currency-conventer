@@ -9,6 +9,7 @@ export const BoxContainer = styled(Box)`
 
 export const StackContainer = styled(Stack)`
   align-items: center;
+  text-align: center;
   height: 100%;
 `;
 
