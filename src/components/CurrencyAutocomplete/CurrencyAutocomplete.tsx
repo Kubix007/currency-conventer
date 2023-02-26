@@ -96,6 +96,7 @@ const CountryAutocomplete = ({
         <TextField
           {...params}
           label="Choose a currency"
+          data-testid="autocompleteTextField"
           inputProps={{
             ...params.inputProps,
             autoComplete: "new-password", // disable autocomplete and autofill

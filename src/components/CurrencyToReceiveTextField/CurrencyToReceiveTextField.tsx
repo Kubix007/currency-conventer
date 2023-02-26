@@ -65,7 +65,11 @@ const CurrencyToReceiveTextField = ({
         ),
         startAdornment: (
           <InputAdornment position="start">
-            <IconButton onClick={handleClick} edge="start">
+            <IconButton
+              onClick={handleClick}
+              edge="start"
+              data-testid="toReceiveButton"
+            >
               <CountryIcons countryIso={currencyToReceive.countryCode} />
             </IconButton>
           </InputAdornment>

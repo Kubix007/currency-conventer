@@ -14,11 +14,11 @@ const convertCurrency = ({
   );
 
   if (targetId === "receiveTextField") {
-    return (parseInt(toReceiveValue) / Number(currencyRate))
+    return (Number(toReceiveValue) / Number(currencyRate))
       .toPrecision(3)
       .toString();
   } else {
-    return (parseInt(toSendValue) * Number(currencyRate))
+    return (Number(toSendValue) * Number(currencyRate))
       .toPrecision(3)
       .toString();
   }

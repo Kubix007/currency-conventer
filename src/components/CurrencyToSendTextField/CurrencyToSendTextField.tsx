@@ -65,7 +65,11 @@ const CurrencyToSendTextField = ({
         ),
         startAdornment: (
           <InputAdornment position="start">
-            <IconButton onClick={handleClick} edge="start">
+            <IconButton
+              data-testid="toSendButton"
+              onClick={handleClick}
+              edge="start"
+            >
               <CountryIcons countryIso={currencyToSend.countryCode} />
             </IconButton>
           </InputAdornment>

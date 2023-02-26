@@ -21,8 +21,12 @@ const ResultDisplay = () => {
         <Stack justifyContent="center" textAlign="center">
           <ResultCountryImage countryIso={currencyToSend.countryCode} />
           <Styles.CurrencyInfo data-testid="sendCurrencyRate">
-            1.00{" "}
-            <Styles.Currency>{currencyToSend.currencyCode}</Styles.Currency>
+            <Styles.ConversionRateValue data-testid="sendConversionRate">
+              1.00
+            </Styles.ConversionRateValue>{" "}
+            <Styles.Currency data-testid="sendCurrencyCode">
+              {currencyToSend.currencyCode}
+            </Styles.Currency>
           </Styles.CurrencyInfo>
         </Stack>
       </Grid>
@@ -36,9 +40,14 @@ const ResultDisplay = () => {
       <Grid item>
         <Stack justifyContent="center" textAlign="center">
           <ResultCountryImage countryIso={currencyToReceive.countryCode} />
-          <Styles.CurrencyInfo>
-            {ExchangeFunctions.convertSingleValue(currency)}{" "}
-            <Styles.Currency> {currencyToReceive.currencyCode}</Styles.Currency>
+          <Styles.CurrencyInfo data-testid="receiveCurrencyRate">
+            <Styles.ConversionRateValue data-testid="receiveConversionRate">
+              {ExchangeFunctions.convertSingleValue(currency)}
+            </Styles.ConversionRateValue>{" "}
+            <Styles.Currency data-testid="receiveCurrencyCode">
+              {" "}
+              {currencyToReceive.currencyCode}
+            </Styles.Currency>
           </Styles.CurrencyInfo>
         </Stack>
       </Grid>

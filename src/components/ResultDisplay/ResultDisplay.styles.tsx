@@ -20,6 +20,8 @@ export const Currency = styled.span`
   font-size: 0.7em;
 `;
 
+export const ConversionRateValue = styled.span``;
+
 export const BlankSpace = styled(Box)`
   content: "";
   height: 92px;
