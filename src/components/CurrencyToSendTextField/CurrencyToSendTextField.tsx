@@ -56,6 +56,7 @@ const CurrencyToSendTextField = ({
       onChange={handleChange}
       value={textField.currencyToSend}
       inputProps={{ min: 0 }}
+      placeholder="Enter amount"
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">

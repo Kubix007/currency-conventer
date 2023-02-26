@@ -23,6 +23,7 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6",
+    "ts-jest": "^29.0.5",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
     "yup": "^1.0.0"
@@ -38,6 +39,11 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
   },
   "browserslist": {
     "production": [

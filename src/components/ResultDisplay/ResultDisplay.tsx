@@ -20,7 +20,7 @@ const ResultDisplay = () => {
       <Grid item>
         <Stack justifyContent="center" textAlign="center">
           <ResultCountryImage countryIso={currencyToSend.countryCode} />
-          <Styles.CurrencyInfo>
+          <Styles.CurrencyInfo data-testid="sendCurrencyRate">
             1.00{" "}
             <Styles.Currency>{currencyToSend.currencyCode}</Styles.Currency>
           </Styles.CurrencyInfo>

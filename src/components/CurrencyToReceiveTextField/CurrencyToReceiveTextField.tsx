@@ -55,6 +55,7 @@ const CurrencyToReceiveTextField = ({
       sx={{ sm: { m: 1, width: "35ch" } }}
       onChange={handleChange}
       value={textField.currencyToReceive}
+      placeholder="Enter amount"
       inputProps={{ min: 0 }}
       InputProps={{
         endAdornment: (
