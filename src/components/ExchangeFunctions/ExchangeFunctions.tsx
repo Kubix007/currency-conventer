@@ -15,12 +15,10 @@ const convertCurrency = ({
 
   if (targetId === "receiveTextField") {
     return (Number(toReceiveValue) / Number(currencyRate))
-      .toPrecision(3)
+      .toFixed(2)
       .toString();
   } else {
-    return (Number(toSendValue) * Number(currencyRate))
-      .toPrecision(3)
-      .toString();
+    return (Number(toSendValue) * Number(currencyRate)).toFixed(2).toString();
   }
 };
 
