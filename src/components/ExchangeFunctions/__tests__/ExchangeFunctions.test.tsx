@@ -46,7 +46,7 @@ test("Check if currency conversion works properly", () => {
       toReceiveValue: "3",
       targetId: "receiveTextField",
     })
-  ).toBe("15.0");
+  ).toBe("15.00");
   expect(
     ExchangeFunctions.convertCurrency({
       currencies: testData,
@@ -54,7 +54,7 @@ test("Check if currency conversion works properly", () => {
       toReceiveValue: "4",
       targetId: "receiveTextField",
     })
-  ).toBe("20.0");
+  ).toBe("20.00");
   expect(
     ExchangeFunctions.convertCurrency({
       currencies: testData,
