@@ -1,3 +1,3 @@
 export interface ICurrencyTextFieldProps {
-  setAnchorEl: any;
+  setAnchorEl: React.Dispatch<React.SetStateAction<HTMLButtonElement | null>>;
 }

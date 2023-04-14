@@ -1,5 +1,7 @@
+import * as SharedTypes from "../../shared/types";
+
 export interface ICurrencyAutocompleteProps {
-  currency: any;
-  handleClose: any;
+  currency: SharedTypes.ICountryType;
+  handleClose: () => void;
   name: string;
 }

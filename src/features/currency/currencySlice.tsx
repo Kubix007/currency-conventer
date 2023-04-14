@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ICurrenciesState } from "../../shared/types";
 import currencyService from "./currencyService";
 import * as SharedTypes from "../../shared/types";
+import axios from "axios";
 
 const initialState: ICurrenciesState = {
   currencies: {
@@ -42,14 +43,19 @@ export const getCurrencyToSend = createAsyncThunk(
   async (data: SharedTypes.IRequestData, thunkAPI) => {
     try {
       return await currencyService.getCurrency(data);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        return thunkAPI.rejectWithValue(message);
+      } else {
+        console.log("unexpected error: ", error);
+        return "An unexpected error occurred";
+      }
     }
   }
 );
@@ -60,14 +66,19 @@ export const getCurrencyToReceive = createAsyncThunk(
   async (data: SharedTypes.IRequestData, thunkAPI) => {
     try {
       return await currencyService.getCurrency(data);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        return thunkAPI.rejectWithValue(message);
+      } else {
+        console.log("unexpected error: ", error);
+        return "An unexpected error occurred";
+      }
     }
   }
 );

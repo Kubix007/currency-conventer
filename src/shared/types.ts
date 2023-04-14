@@ -42,7 +42,7 @@ export interface ITextFieldState {
 }
 
 export interface IRequestData {
-  table: any;
+  table: string;
   code: string;
 }
 

@@ -73,7 +73,10 @@ const CountryAutocomplete = ({
         option.currencyCode === value.currencyCode
       }
       value={currency}
-      onChange={(event: any, newValue: SharedTypes.ICountryType | null) => {
+      onChange={(
+        event: React.SyntheticEvent,
+        newValue: SharedTypes.ICountryType | null
+      ) => {
         handleChange(newValue);
       }}
       getOptionLabel={(option) => option.currencyCode}
@@ -99,7 +102,6 @@ const CountryAutocomplete = ({
           data-testid="autocompleteTextField"
           inputProps={{
             ...params.inputProps,
-            autoComplete: "new-password", // disable autocomplete and autofill
           }}
         />
       )}

@@ -1,5 +1,5 @@
 export interface IPopoverProps {
-  anchorEl: any;
-  setAnchorEl: any;
+  anchorEl: HTMLButtonElement | null;
+  setAnchorEl: React.Dispatch<React.SetStateAction<HTMLButtonElement | null>>;
   name: string;
 }
