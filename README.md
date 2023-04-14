@@ -1,6 +1,6 @@
 # Currency Conventer
 
-Simple application containing pagination tables using data from api.
+
 
 ## How to run project?
 
